@@ -9,6 +9,10 @@
 5. [地图题：公园改造](task1_three_part_drills/05_map_drill.html)
 6. [流程图：再生纸生产](task1_three_part_drills/06_process_drill.html)
 
+另外包含一份 IELTS Writing Task 2 练习：
+
+- [Risk-taking 大作文默写纠错卷](risk_taking_essay_drill.html)
+
 ## 使用方法
 
 1. 点击 GitHub 页面右上角的 **Code → Download ZIP**。
@@ -30,3 +34,4 @@
 
 六份 HTML 为独立入口，分别打开时计时和输入状态互不影响。
 
+Task 2 练习卷也是独立的单文件页面，可单独复制或下载使用。
