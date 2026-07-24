@@ -2,6 +2,8 @@
 
 包含 6 份可离线使用的 IELTS Academic Writing Task 1 互动练习：
 
+在线访问：[https://celine8-ctrl.github.io/task1/](https://celine8-ctrl.github.io/task1/)
+
 1. [动态图：公共交通多折线图](task1_three_part_drills/01_dynamic_multiline_drill.html)
 2. [动态图：家庭能源柱状图](task1_three_part_drills/02_dynamic_bar_drill.html)
 3. [静态图：家庭支出饼图](task1_three_part_drills/03_static_pie_drill.html)
