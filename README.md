@@ -20,6 +20,10 @@
 - [口语 + Task 2 材料默写纠错卷](task2_speaking_materials_drill.html)
 - 7 个专题的 Markdown 原始学习资料位于 [`task2_speaking_source_materials`](task2_speaking_source_materials/)
 
+语法专项练习：
+
+- [Grammar Diversity 重点默写纠错卷](grammar_diversity_drill.html)
+
 ## 使用方法
 
 1. 点击 GitHub 页面右上角的 **Code → Download ZIP**。
@@ -44,3 +48,5 @@
 Task 2 练习卷也是独立的单文件页面，可单独复制或下载使用。
 
 口语 + Task 2 综合材料练习包含 7 个互相切换的专题、单词级即时纠错、拼写提示、逐题解锁和原始 Markdown 资料入口。
+
+Grammar Diversity 练习包含 15 个语法专题，适用于 IELTS Speaking 与 Writing Task 2。
