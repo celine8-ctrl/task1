@@ -3,7 +3,7 @@ let active=0;
 function norm(s){return s.toLowerCase().replace(/[’‘]/g,"'").replace(/[^a-z0-9']/g,' ').trim().replace(/\s+/g,' ')}
 function words(s){return norm(s).split(' ').filter(Boolean)}
 function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function coloured(expected,actual){let t=words(expected),i=0;return actual.split(/(\s+)/).map(p=>{if(/^\s+$/.test(p))return p;let c=norm(p)===t[i]?'good':'bad';i++;return '<span class="'+c+'">'+esc(p)+'</span>'}).join('')}
+function coloured(expected,actual){let t=words(expected),i=0;return actual.split(/(\s+)/).map(p=>{if(/^\s+$/.test(p))return p;let n=norm(p);if(!n)return esc(p);let c=n===t[i]?'good':'bad';i++;return '<span class="'+c+'">'+esc(p)+'</span>'}).join('')}
 function spell(expected,actual){let a=words(expected),b=words(actual);if(a.length!==b.length)return '';let d=[];a.forEach((x,i)=>{if(x!==b[i])d.push([b[i],x])});return d.length===1?'拼写提示：'+d[0][0]+' → '+d[0][1]:''}
 function render(){let d=decks[active];document.getElementById('tabs').innerHTML=decks.map((x,i)=>'<button class="tab '+(i===active?'':'off')+'" onclick="choose('+i+')">'+x[0]+'</button>').join('');document.getElementById('deckTitle').textContent=d[0]+'｜'+d[2].length+' 题';document.getElementById('deckIntro').textContent=d[1];document.getElementById('items').innerHTML=d[2].map((x,i)=>'<div class="item"><div class="num">'+(i+1)+'</div><div><p class="hint">'+esc(x[0])+'</p><div id="w'+i+'" class="wrap '+(i?'locked':'')+'"><div id="m'+i+'" class="mirror"></div><input id="i'+i+'" class="drill" '+(i?'disabled':'')+' autocomplete="off" spellcheck="false" placeholder="'+(i?'答对上一题后解锁':'输入英文表达')+'" oninput="check('+i+')"></div><button class="secondary mini" onclick="toggle(\'a'+i+'\')">显示答案</button><div id="f'+i+'" class="feedback"></div><div id="a'+i+'" class="answer hidden">标准答案：'+esc(x[1])+'</div></div></div>').join('');document.getElementById('score').textContent='进度：0 / '+d[2].length}
 function choose(i){active=i;render()}
@@ -11,4 +11,3 @@ function check(i){let items=decks[active][2],x=document.getElementById('i'+i),a=
 function resetDeck(){render()}
 function toggle(id){document.getElementById(id).classList.toggle('hidden')}
 window.onload=render;
-

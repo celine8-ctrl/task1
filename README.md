@@ -24,6 +24,14 @@
 
 - [Grammar Diversity 重点默写纠错卷](grammar_diversity_drill.html)
 
+IELTS Speaking Part 1 专项练习：
+
+- [Part 1 八大分类默写纠错卷](p1_eight_categories_drill.html)
+
+IELTS Speaking Part 3 专项练习：
+
+- [Part 3 重点推理默写纠错卷](p3_reasoning_ideas_drill.html)
+
 ## 使用方法
 
 1. 点击 GitHub 页面右上角的 **Code → Download ZIP**。
@@ -50,3 +58,7 @@ Task 2 练习卷也是独立的单文件页面，可单独复制或下载使用�
 口语 + Task 2 综合材料练习包含 7 个互相切换的专题、单词级即时纠错、拼写提示、逐题解锁和原始 Markdown 资料入口。
 
 Grammar Diversity 练习包含 15 个语法专题，适用于 IELTS Speaking 与 Writing Task 2。
+
+Part 1 八大分类练习覆盖喜好、频率、经历、重要性、国家、选择、列举和观点题。
+
+Part 3 重点推理练习覆盖通用推理链、人物与群体、社会现象、学习成长、景观和价值观。
