@@ -15,13 +15,18 @@
 
 - [Risk-taking 大作文默写纠错卷](risk_taking_essay_drill.html)
 
+还包含一套 IELTS 口语 + Task 2 综合材料练习：
+
+- [口语 + Task 2 材料默写纠错卷](task2_speaking_materials_drill.html)
+- 7 个专题的 Markdown 原始学习资料位于 [`task2_speaking_source_materials`](task2_speaking_source_materials/)
+
 ## 使用方法
 
 1. 点击 GitHub 页面右上角的 **Code → Download ZIP**。
 2. 解压下载的文件。
 3. 打开根目录的 `index.html`，或直接打开以上任意练习卷。
 
-所有内容均可在浏览器中离线运行，无需安装软件或连接服务器。
+所有内容均可在浏览器中离线运行，无需安装软件或连接服务器。综合材料练习需保留 HTML、JavaScript 和 `task2_speaking_source_materials` 文件夹的相对位置。
 
 ## 每份练习卷包括
 
@@ -37,3 +42,5 @@
 六份 HTML 为独立入口，分别打开时计时和输入状态互不影响。
 
 Task 2 练习卷也是独立的单文件页面，可单独复制或下载使用。
+
+口语 + Task 2 综合材料练习包含 7 个互相切换的专题、单词级即时纠错、拼写提示、逐题解锁和原始 Markdown 资料入口。
