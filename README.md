@@ -1,4 +1,14 @@
-# IELTS Writing Task 1 默写纠错卷
+# 互动学习试卷
+
+## 肿瘤科题库
+
+- 在线入口：[肿瘤科完整选择题题库](https://celine8-ctrl.github.io/task1/oncology_exam/)
+- 离线入口：[`oncology_exam/index.html`](oncology_exam/index.html)
+- 四套扫描试卷合并去重，共 158 道可识别题目：单选题 88 道、案例题 22 道、多选题 32 道、判断题 16 道。
+- 支持逐题作答、独立显示答案、关键词筛选、答题状态筛选、分区进度和浏览器本地记录。
+- 题目来自 OCR 转换；药名、剂量和临床结论需以原始资料与现行规范为准。
+
+## IELTS Writing Task 1 默写纠错卷
 
 包含 6 份可离线使用的 IELTS Academic Writing Task 1 互动练习：
 
