@@ -38,6 +38,14 @@ IELTS Speaking Part 1 专项练习：
 
 - [Part 1 八大分类默写纠错卷](p1_eight_categories_drill.html)
 
+IELTS Speaking Part 1 一小时通用背诵版：
+
+- 在线入口：[一小时互动默写纠错卷](https://celine8-ctrl.github.io/task1/ielts_part1_one_hour_drill.html)
+- 离线入口：[`ielts_part1_one_hour_drill.html`](ielts_part1_one_hour_drill.html)
+- 配套背诵册：[`ielts_part1_one_hour_memorisation.md`](ielts_part1_one_hour_memorisation.md)
+- 覆盖8类回答骨架、12个个人素材模块、16个连接表达，以及24个主题、122道现行题的快速开口导航。
+- 互动卷包含67个核心默写项、单词级纠错、拼写提示、顺序解锁、分区重置和全局清空；没有计时或写作模块。
+
 IELTS Speaking Part 3 专项练习：
 
 - [Part 3 重点推理默写纠错卷](p3_reasoning_ideas_drill.html)
@@ -82,3 +90,5 @@ Part 1 八大分类练习覆盖喜好、频率、经历、重要性、国家、�
 Part 3 重点推理练习覆盖通用推理链、人物与群体、社会现象、学习成长、景观和价值观。
 
 Part 3 一小时通用背诵版是独立单文件页面；配套 Markdown 仅用于阅读和下载，不影响互动卷运行。
+
+Part 1 一小时通用背诵版是独立单文件页面；配套 Markdown 仅用于阅读和下载，不影响互动卷运行。
