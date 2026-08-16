@@ -42,6 +42,14 @@ IELTS Speaking Part 3 专项练习：
 
 - [Part 3 重点推理默写纠错卷](p3_reasoning_ideas_drill.html)
 
+IELTS Speaking Part 3 一小时通用背诵版：
+
+- 在线入口：[一小时互动默写纠错卷](https://celine8-ctrl.github.io/task1/ielts_part3_one_hour_drill.html)
+- 离线入口：[`ielts_part3_one_hour_drill.html`](ielts_part3_one_hour_drill.html)
+- 配套背诵册：[`ielts_part3_one_hour_memorisation.md`](ielts_part3_one_hour_memorisation.md)
+- 覆盖 4 步答题骨架、8 类题型模板、10 组主题理由链，以及 52 个话题、305 道追问的逐题导航。
+- 互动卷包含 40 个核心句块、单词级纠错、拼写提示、顺序解锁、显示答案和分区重置；没有计时或写作模块。
+
 ## 使用方法
 
 1. 点击 GitHub 页面右上角的 **Code → Download ZIP**。
@@ -72,3 +80,5 @@ Grammar Diversity 练习包含 15 个语法专题，适用于 IELTS Speaking 与
 Part 1 八大分类练习覆盖喜好、频率、经历、重要性、国家、选择、列举和观点题。
 
 Part 3 重点推理练习覆盖通用推理链、人物与群体、社会现象、学习成长、景观和价值观。
+
+Part 3 一小时通用背诵版是独立单文件页面；配套 Markdown 仅用于阅读和下载，不影响互动卷运行。

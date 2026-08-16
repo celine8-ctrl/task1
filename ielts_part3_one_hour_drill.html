@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IELTS Part 3 一小时互动默写卷</title>
+<style>
+:root { --ink:#172033; --muted:#667085; --paper:#fffdf8; --blue:#2457d6; --blue-soft:#eaf0ff; --red:#d92d20; --green:#137a4b; --line:#e5e7eb; --shadow:0 16px 40px rgba(23,32,51,.08); }
+* { box-sizing:border-box; }
+body { margin:0; color:var(--ink); background:linear-gradient(135deg,#f5f7ff 0%,#fff8ee 100%); font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif; }
+.page { width:min(980px,calc(100% - 28px)); margin:32px auto 60px; }
+header { padding:30px; border:1px solid rgba(36,87,214,.12); border-radius:24px; background:rgba(255,255,255,.9); box-shadow:var(--shadow); }
+h1 { margin:0 0 8px; font-size:clamp(26px,5vw,42px); line-height:1.2; }
+.subtitle { margin:0; color:var(--muted); }
+.rule { display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+.pill { padding:6px 11px; border-radius:999px; background:var(--blue-soft); color:#163c9b; font-size:14px; }
+.tabs { display:flex; gap:8px; overflow:auto; padding:18px 2px 12px; position:sticky; top:0; z-index:5; backdrop-filter:blur(10px); }
+.tab { white-space:nowrap; border:1px solid var(--line); background:white; color:var(--ink); border-radius:999px; padding:9px 15px; cursor:pointer; font-weight:700; }
+.tab.active { background:var(--blue); color:white; border-color:var(--blue); }
+.panel { display:none; padding:26px; border:1px solid var(--line); border-radius:22px; background:var(--paper); box-shadow:var(--shadow); }
+.panel.active { display:block; }
+.panel-head { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:20px; }
+.panel h2 { margin:0 0 4px; }
+.usage { margin:0; color:var(--muted); }
+.progress { white-space:nowrap; padding:6px 11px; border-radius:999px; background:#eef8f2; color:var(--green); font-weight:800; }
+.item { margin:15px 0; padding:18px; border:1px solid var(--line); border-radius:17px; background:white; transition:.2s ease; }
+.item.locked { opacity:.55; }
+.item.correct { border-color:#8bd3af; background:#f3fbf7; }
+.prompt { margin:0 0 10px; font-weight:700; }
+.code { display:inline-block; min-width:48px; margin-right:7px; color:var(--blue); }
+.input-wrap { position:relative; min-height:74px; border:1.5px solid #b9c0cc; border-radius:12px; background:white; overflow:hidden; }
+.input-wrap:focus-within { border-color:var(--blue); box-shadow:0 0 0 3px rgba(36,87,214,.12); }
+.mirror,.answer-input { width:100%; min-height:74px; margin:0; padding:11px 12px; border:0; font:16px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace; white-space:pre-wrap; overflow-wrap:anywhere; }
+.mirror { position:absolute; inset:0; pointer-events:none; color:var(--ink); }
+.mirror .bad { color:var(--red); font-weight:700; }
+.mirror .good { color:var(--ink); }
+.answer-input { position:relative; display:block; resize:vertical; color:transparent; caret-color:var(--ink); background:transparent; outline:0; -webkit-text-fill-color:transparent; }
+.answer-input::selection { background:rgba(36,87,214,.2); }
+.answer-input:disabled { cursor:not-allowed; }
+.feedback { min-height:25px; margin-top:7px; font-size:14px; color:var(--muted); }
+.feedback.hint { color:var(--red); }
+.feedback.done { color:var(--green); font-weight:700; }
+.actions { display:flex; gap:9px; flex-wrap:wrap; margin-top:8px; }
+button { font:inherit; }
+.small,.reset { border:1px solid var(--line); border-radius:10px; padding:7px 11px; background:#fff; cursor:pointer; }
+.small:hover,.reset:hover { border-color:var(--blue); color:var(--blue); }
+.revealed { margin-top:9px; padding:10px 12px; border-radius:10px; background:#fff7e8; color:#704700; }
+.hidden { display:none; }
+.panel-foot { display:flex; justify-content:flex-end; margin-top:18px; }
+.noscript { margin-top:16px; padding:12px; color:var(--red); background:#fff1f0; border-radius:12px; }
+@media (max-width:640px) { .page{margin-top:14px} header,.panel{padding:20px} .panel-head{display:block} .progress{display:inline-block;margin-top:10px} }
+</style>
+</head>
+<body>
+<main class="page">
+  <header>
+    <h1>IELTS Part 3 一小时互动默写卷</h1>
+    <p class="subtitle">40 个核心句块 · 7–7.5 分表达 · 答对后自动解锁下一题</p>
+    <div class="rule"><span class="pill">忽略大小写与标点</span><span class="pill">错词单独标红</span><span class="pill">每题可显示答案</span><span class="pill">无计时 / 无写作模块</span></div>
+  </header>
+  <nav class="tabs" id="tabs" aria-label="练习分区"></nav>
+  <div id="app"></div>
+  <noscript><div class="noscript">请启用 JavaScript 后使用互动纠错功能。</div></noscript>
+</main>
+<script>
+const DATA = [{"id": "framework", "title": "四步答题骨架", "usage": "先正面回应，再给原因、例子和结果。考场上不必四句全说，通常组合三句即可。", "items": [{"id": "F01", "prompt": "先正面回应问题，并用适度限定避免绝对化。", "answer": "Generally, I would say yes, although it depends on the person and situation."}, {"id": "F02", "prompt": "给出最核心的原因。", "answer": "The main reason is that it directly affects people's choices, habits and quality of life."}, {"id": "F03", "prompt": "用一个容易修改的例子展开。", "answer": "For example, easier access to useful resources helps people make sensible decisions."}, {"id": "F04", "prompt": "说明结果，并补充适度让步。", "answer": "As a result, it can help if used responsibly."}]}, {"id": "templates", "title": "8 类题型模板", "usage": "看到疑问词先选模板，再把方括号位置替换成题目中的对象和主题理由。", "items": [{"id": "T01", "prompt": "观点、是否、Should 类：总体赞成，但承认取决于具体情况。", "answer": "Generally, I agree that [idea] is worthwhile, but its effect depends on how it is carried out."}, {"id": "T02", "prompt": "原因类：指出两个常见驱动因素。", "answer": "There are two main reasons: people want [benefit], and they are also influenced by [outside factor]."}, {"id": "T03", "prompt": "优点、缺点或双面类：先回应题目所问的一面。", "answer": "It is a double-edged sword: the main benefit is [advantage], while the drawback is [disadvantage]."}, {"id": "T04", "prompt": "比较类：共同点之后突出最关键差异。", "answer": "Both options can [shared benefit], but the main difference is that [X] is more [feature], whereas [Y] is more [feature]."}, {"id": "T05", "prompt": "方法或解决方案类：个人行动与制度支持并用。", "answer": "A practical approach is to combine individual action with support from schools, companies or the government."}, {"id": "T06", "prompt": "种类、人群、流行趋势类：先分成两大类。", "answer": "The most common ones fall into two groups: those that meet practical needs and those that provide enjoyment."}, {"id": "T07", "prompt": "重要性、品质、成功因素类：给出首要因素。", "answer": "The key factor is [quality], because without it, even good resources or opportunities may be wasted."}, {"id": "T08", "prompt": "过去变化或未来预测类：给趋势和保留条件。", "answer": "Compared with the past, this has become more common, and the trend will probably continue unless people's needs change."}]}, {"id": "topics", "title": "10 组主题理由链", "usage": "每个主题记住两句：第一句提供原因，第二句提供例子或结果。替换括号中的对象即可迁移。", "items": [{"id": "C01a", "prompt": "儿童与教育：孩子好奇、适应力强，但自控力仍在发展。", "answer": "Children are naturally curious and adaptable, but their self-control and judgement are still developing."}, {"id": "C01b", "prompt": "儿童与教育：学校应通过实践和反馈培养能力。", "answer": "Schools can build useful skills through hands-on tasks, clear guidance and regular feedback rather than rote learning alone."}, {"id": "C02a", "prompt": "科技与 AI：科技提高效率和信息获取。", "answer": "Technology improves efficiency and gives people quick access to information, education and services."}, {"id": "C02b", "prompt": "科技与 AI：过度依赖会削弱互动、隐私和独立思考。", "answer": "However, over-reliance on it may reduce face-to-face interaction, threaten privacy and weaken independent thinking."}, {"id": "C03a", "prompt": "工作与商业：人们看重收入、成长和工作生活平衡。", "answer": "At work, people usually value a stable income, career growth and a reasonable work-life balance."}, {"id": "C03b", "prompt": "工作与商业：成功来自技能、创新、需求和可靠合作。", "answer": "Long-term success normally comes from relevant skills, innovation, market demand and reliable teamwork."}, {"id": "C04a", "prompt": "人际关系：信任来自尊重、沟通和情感支持。", "answer": "Strong relationships are built on mutual respect, honest communication and emotional support."}, {"id": "C04b", "prompt": "人际关系：线上联系方便，但难以完全替代面对面交流。", "answer": "Online contact is convenient, but it cannot fully replace the warmth and depth of face-to-face communication."}, {"id": "C05a", "prompt": "规则与社会：清晰规则保护安全、公平和秩序。", "answer": "Clear rules protect public safety, fairness and social order by setting acceptable boundaries."}, {"id": "C05b", "prompt": "规则与社会：教育奖励通常优先，严重违规才处罚。", "answer": "Education and rewards should come first, while proportionate punishment is necessary for serious or repeated misconduct."}, {"id": "C06a", "prompt": "环境与交通：便利若缺少规划，会带来污染和资源压力。", "answer": "Convenience often has an environmental cost, including pollution, waste and pressure on limited resources."}, {"id": "C06b", "prompt": "环境与交通：个人习惯、基础设施和政策需要配合。", "answer": "Real progress requires greener daily habits, better infrastructure and effective government policy working together."}, {"id": "C07a", "prompt": "城市与居住：城市提供工作、交通和公共服务。", "answer": "Cities attract people by offering more jobs, efficient transport and easier access to public services."}, {"id": "C07b", "prompt": "城市与居住：代价可能是拥挤、噪音、高成本和自然不足。", "answer": "The trade-off can be crowding, noise, high living costs and limited access to nature."}, {"id": "C08a", "prompt": "消费与广告：人们受价格、便利、质量和社会影响驱动。", "answer": "Buying decisions are shaped by price, convenience, quality and social influence, especially online advertising."}, {"id": "C08b", "prompt": "消费与广告：比较会引发冲动消费和经济压力。", "answer": "Constant comparison can encourage unnecessary spending and create financial pressure instead of lasting satisfaction."}, {"id": "C09a", "prompt": "文化艺术与媒体：它们提供知识、放松和共同体验。", "answer": "Art, stories and media can provide knowledge, relaxation and shared cultural experiences."}, {"id": "C09b", "prompt": "文化艺术与媒体：线下体验更沉浸，数字渠道更便捷。", "answer": "Physical venues offer a more immersive atmosphere, whereas digital platforms are cheaper and more accessible."}, {"id": "C10a", "prompt": "健康与休闲：规律活动能缓解压力并改善专注。", "answer": "Regular exercise and meaningful leisure reduce stress, improve concentration and support long-term health."}, {"id": "C10b", "prompt": "健康与休闲：能坚持的均衡习惯胜过极端改变。", "answer": "A balanced routine that people can maintain is usually more effective than a dramatic short-term change."}]}, {"id": "linkers", "title": "连接、限定与救场表达", "usage": "用这些短句争取思考时间、限定观点并自然收尾；不要在一个答案里全部堆叠。", "items": [{"id": "L01", "prompt": "大多数情况下……", "answer": "In most cases, that is probably true."}, {"id": "L02", "prompt": "在某种程度上……", "answer": "That is true to some extent."}, {"id": "L03", "prompt": "这很大程度上取决于……", "answer": "It largely depends on age, needs and personal circumstances."}, {"id": "L04", "prompt": "主要原因是……", "answer": "The main reason is that it offers an immediate and practical benefit."}, {"id": "L05", "prompt": "另一个需要考虑的因素是……", "answer": "Another factor is the influence of family, peers and society."}, {"id": "L06", "prompt": "举一个简单的例子……", "answer": "A simple example would be students using online tools to review difficult lessons."}, {"id": "L07", "prompt": "因此，从长远来看……", "answer": "As a result, it can make a real difference in the long run."}, {"id": "L08", "prompt": "不过不应忽视潜在问题。", "answer": "That said, the potential drawbacks should not be ignored."}]}];
+
+function words(value) {
+  return (value.toLowerCase().match(/[a-z0-9]+(?:[-'][a-z0-9]+)*/g) || []);
+}
+
+function isCorrect(typed, expected) {
+  return words(typed).join(' ') === words(expected).join(' ');
+}
+
+function oneWordHint(typed, expected) {
+  const got = words(typed);
+  const want = words(expected);
+  if (got.length !== want.length) return '';
+  const wrong = [];
+  for (let i = 0; i < want.length; i += 1) {
+    if (got[i] !== want[i]) wrong.push(i);
+  }
+  return wrong.length === 1 ? `拼写提示：${got[wrong[0]]} → ${want[wrong[0]]}` : '';
+}
+
+function paintMirror(mirror, typed, expected) {
+  mirror.replaceChildren();
+  const expectedWords = words(expected);
+  const parts = typed.match(/[A-Za-z0-9]+(?:[-'][A-Za-z0-9]+)*|\s+|[^A-Za-z0-9\s]+/g) || [];
+  let index = 0;
+  parts.forEach(part => {
+    const span = document.createElement('span');
+    span.textContent = part;
+    if (/^[A-Za-z0-9]/.test(part)) {
+      const normalized = words(part)[0] || '';
+      span.className = normalized === expectedWords[index] ? 'good' : 'bad';
+      index += 1;
+    }
+    mirror.appendChild(span);
+  });
+}
+
+function sectionProgress(panel) {
+  const all = panel.querySelectorAll('.item').length;
+  const done = panel.querySelectorAll('.item.correct').length;
+  panel.querySelector('.progress').textContent = `${done} / ${all}`;
+}
+
+function unlockNext(item) {
+  const next = item.nextElementSibling;
+  if (!next || !next.classList.contains('item')) return;
+  next.classList.remove('locked');
+  const input = next.querySelector('.answer-input');
+  input.disabled = false;
+  input.focus();
+}
+
+function render() {
+  const tabs = document.getElementById('tabs');
+  const app = document.getElementById('app');
+  DATA.forEach((section, sectionIndex) => {
+    const tab = document.createElement('button');
+    tab.type = 'button';
+    tab.className = 'tab' + (sectionIndex === 0 ? ' active' : '');
+    tab.textContent = section.title;
+    tab.dataset.target = section.id;
+    tabs.appendChild(tab);
+
+    const panel = document.createElement('section');
+    panel.id = section.id;
+    panel.className = 'panel' + (sectionIndex === 0 ? ' active' : '');
+    const head = document.createElement('div');
+    head.className = 'panel-head';
+    const heading = document.createElement('div');
+    const h2 = document.createElement('h2');
+    h2.textContent = section.title;
+    const usage = document.createElement('p');
+    usage.className = 'usage';
+    usage.textContent = section.usage;
+    heading.append(h2, usage);
+    const progress = document.createElement('span');
+    progress.className = 'progress';
+    progress.textContent = `0 / ${section.items.length}`;
+    head.append(heading, progress);
+    panel.appendChild(head);
+
+    section.items.forEach((entry, itemIndex) => {
+      const item = document.createElement('article');
+      item.className = 'item' + (itemIndex === 0 ? '' : ' locked');
+      const prompt = document.createElement('p');
+      prompt.className = 'prompt';
+      const code = document.createElement('span');
+      code.className = 'code';
+      code.textContent = entry.id;
+      prompt.append(code, document.createTextNode(entry.prompt));
+
+      const wrap = document.createElement('div');
+      wrap.className = 'input-wrap';
+      const mirror = document.createElement('div');
+      mirror.className = 'mirror';
+      mirror.setAttribute('aria-hidden', 'true');
+      const input = document.createElement('textarea');
+      input.className = 'answer-input';
+      input.rows = 2;
+      input.disabled = itemIndex !== 0;
+      input.setAttribute('aria-label', `${entry.id} 英文答案`);
+      input.autocomplete = 'off';
+      input.spellcheck = false;
+      wrap.append(mirror, input);
+
+      const feedback = document.createElement('div');
+      feedback.className = 'feedback';
+      feedback.setAttribute('aria-live', 'polite');
+      const actions = document.createElement('div');
+      actions.className = 'actions';
+      const show = document.createElement('button');
+      show.type = 'button';
+      show.className = 'small';
+      show.textContent = '显示答案';
+      const revealed = document.createElement('div');
+      revealed.className = 'revealed hidden';
+      revealed.textContent = entry.answer;
+      show.addEventListener('click', () => {
+        const hidden = revealed.classList.toggle('hidden');
+        show.textContent = hidden ? '显示答案' : '隐藏答案';
+      });
+      actions.appendChild(show);
+
+      input.addEventListener('input', () => {
+        paintMirror(mirror, input.value, entry.answer);
+        if (isCorrect(input.value, entry.answer)) {
+          item.classList.add('correct');
+          item.classList.remove('locked');
+          input.disabled = true;
+          mirror.textContent = entry.answer;
+          feedback.textContent = '正确，下一题已解锁。';
+          feedback.className = 'feedback done';
+          sectionProgress(panel);
+          unlockNext(item);
+        } else {
+          const hint = oneWordHint(input.value, entry.answer);
+          feedback.textContent = hint;
+          feedback.className = hint ? 'feedback hint' : 'feedback';
+        }
+      });
+
+      item.append(prompt, wrap, feedback, actions, revealed);
+      panel.appendChild(item);
+    });
+
+    const foot = document.createElement('div');
+    foot.className = 'panel-foot';
+    const reset = document.createElement('button');
+    reset.type = 'button';
+    reset.className = 'reset';
+    reset.textContent = '重置本区';
+    reset.addEventListener('click', () => {
+      panel.querySelectorAll('.item').forEach((item, index) => {
+        item.classList.remove('correct');
+        item.classList.toggle('locked', index !== 0);
+        const input = item.querySelector('.answer-input');
+        input.value = '';
+        input.disabled = index !== 0;
+        item.querySelector('.mirror').replaceChildren();
+        const feedback = item.querySelector('.feedback');
+        feedback.textContent = '';
+        feedback.className = 'feedback';
+        item.querySelector('.revealed').classList.add('hidden');
+        item.querySelector('.small').textContent = '显示答案';
+      });
+      sectionProgress(panel);
+      panel.querySelector('.answer-input').focus();
+    });
+    foot.appendChild(reset);
+    panel.appendChild(foot);
+    app.appendChild(panel);
+  });
+
+  tabs.addEventListener('click', event => {
+    const tab = event.target.closest('.tab');
+    if (!tab) return;
+    document.querySelectorAll('.tab').forEach(x => x.classList.toggle('active', x === tab));
+    document.querySelectorAll('.panel').forEach(x => x.classList.toggle('active', x.id === tab.dataset.target));
+  });
+}
+
+render();
+</script>
+</body>
+</html>
