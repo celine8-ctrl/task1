@@ -4,7 +4,7 @@
 
 - 在线入口：[医务英语互动默写纠错卷](https://celine8-ctrl.github.io/task1/medical_english_handbook_exam.html)
 - 离线入口：[`medical_english_handbook_exam.html`](medical_english_handbook_exam.html)
-- 完整覆盖原手册 Part 2–8 与三个附录，共 675 道练习；按要求排除 Part 1。
+- 完整覆盖原手册 Part 2–8 与三个附录，共 677 道练习；按要求排除 Part 1。
 - 支持中译英回忆、英文补全、单词级红黑纠错、单词拼写提示、顺序解锁、分区进度、显示答案和分区重置。
 - 试卷为独立单文件页面，没有外部依赖；刷新页面后作答进度不会保存。
 
